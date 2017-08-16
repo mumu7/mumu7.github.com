@@ -4,6 +4,7 @@
 <blockquote>
 <p><code>r</code> 代表可读<br><code>w</code> 代表可写<br><code>x</code> 代表可执行</p>
 </blockquote>
+<a id="more"></a>
 <p><code>chmod [xyz][文件名]</code>：（这里的xyz表示数字）赋值权限<br> 默认一个目录的权限为 755，而一个文件的默认权限为644<br><code>chmod -R [xyz][文件名]</code>：级联更改</p>
 <blockquote>
 <p>赋值权限的顺序为 1.user 2.group3.others,<br>我们可以用u,g,o来代表他们的属性. a 则代表 all 亦即全部<br>用法示例：<code>chomd u=rwx,og=r javaMain.java</code><br>减少权限：<code>chomd u-x javaMain.java</code>  去掉取消user的执行权限</p>
