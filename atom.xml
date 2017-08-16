@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-16T04:05:49.000Z</updated>
+  <updated>2017-08-16T06:59:08.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java虚拟机运行时内存分区</title>
+    <link href="http://yoursite.com/2017/08/16/java%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    <id>http://yoursite.com/2017/08/16/java虚拟机/</id>
+    <published>2017-08-16T06:00:00.000Z</published>
+    <updated>2017-08-16T06:59:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<p>Java虚拟机在执行java程序的过程中会把它所管理的内存划分为若干个不同的数据区域，<br>主要包括：<strong>方法区、虚拟机栈、本地方法栈、堆、程序计数器</strong>。其中，java堆和方法区是<strong>线程共享的数据区</strong>，其他几个都属于<strong>线程私有的</strong>。</p>
+<h4 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器:"></a>程序计数器:</h4><p>程序计数器是一块较小的内存空间，它的作用可以看做是<strong>当前线程所执行的字节码的行号指示器</strong> ，字节码解释器的工作就是通过改变这个计数器的值来选取下一条需要执行的字节码指令，<strong>分支、循环、跳转、异常处理、线程恢复</strong>等基础功能都需要依赖这个计数器来完成。</p>
+<p>如果线程正在执行的是java方法，这个计数器记录的是正在执行的虚拟机字节码指令的地址；如果正在执行的是Native方法，这个计数器的值为空（undefined）<br>此内存区域是<strong>唯一一个</strong>在Java虚拟机规范中没有规定任何情况的<code>OutofMemoryError</code>区域</p>
+<h4 id="Java虚拟机栈："><a href="#Java虚拟机栈：" class="headerlink" title="Java虚拟机栈："></a>Java虚拟机栈：</h4><p>虚拟机栈描述的是Java方法执行的内存模型，每个方法被执行的时候都会创建一个线帧，用于存储 <code>局部变量表、操作栈、动态链接、方法出口</code>等信息。每一个方法 被调用至执行完成的过程，就对应着一个线帧在虚拟机栈中从入栈到出栈的过程。</p>
+<p>我们通常把Java内存区分为<code>堆内存和栈内存</code>。</p>
+<blockquote>
+<p>栈内存指的就是现在所讲的虚拟机栈，或者说是   虚拟机栈中局部  变量表部分.<br> 局部变量表所需的内存空间在编译期间完成分配。<br> 在方法运行期间不会改变局部变量表的大小<br> 在java虚拟机栈中，规定了两个异常，<code>StackOverflowError</code>和  <code>OutOfMemoryError</code>异常</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="本地方法栈："><a href="#本地方法栈：" class="headerlink" title="本地方法栈："></a>本地方法栈：</h4><p>本地方法栈和虚拟机栈所发挥的作用非常相似，<strong>区别在于虚拟机栈为虚拟机执行java方法，而本地方法栈则为虚拟机执行native方法</strong>。<br>有些虚拟机（如HotSpot）直接把本地方法栈和虚拟机栈合二为一</p>
+<h4 id="java堆："><a href="#java堆：" class="headerlink" title="java堆："></a>java堆：</h4><blockquote>
+<p>java堆是java虚拟机所管理的内存中<strong>最大的</strong>一块。<br>java堆是被所有线程共享的一块内存区域，在虚拟机启动时创建。在此内存区域的唯一目的就是存放对象实例，<strong>几乎所有的对象实例</strong>都在这里分配内存。<br>java堆是<strong>垃圾回收器管理的主要区域</strong>，因此很多时候被称为”GC堆”</p>
+</blockquote>
+<p>Java堆可以处于物理上不连续的内存空间，只要逻辑上连续的即可。在实现上，既可以实现固定大小的，也可以是扩展的。<br>由于现在收集器基本上都是采用分代收集算法，所以java堆中可以细分为：<code>新生代</code>和<code>老年代</code>。<br>在细致一点可以分为：Eden空间、 From Survivor空间、To Survivor空间等。<br>如果在堆中没有内存完成实例分配，并且堆也无法再扩展时，将会抛出<code>OutOfMemoryError</code>异常</p>
+<h4 id="方法区："><a href="#方法区：" class="headerlink" title="方法区："></a>方法区：</h4><p>方法区与java堆类似，是各个线程共享的内存区域，它用于存储已<strong>被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码</strong>等数据<br>当方法区无法满足内存分配需求时，将会抛出<code>OutOfMemoryError</code>异常</p>
+<h4 id="运行时常量池："><a href="#运行时常量池：" class="headerlink" title="运行时常量池："></a>运行时常量池：</h4><p>运行时常量是方法区的一部分。用于存放<strong>编译期生成的各种字面量和符号的引用</strong>，这部分内容将在类加载后 进入方法区的运行时常量池中存放。<br>除了保存class文件中描述的符号引用外，还会把<strong>翻译出来的直接引用</strong>也存储在运行时常量池。<br>运行常量池相对于class文件常量池的另一个重要特性是<strong>具备动态性</strong>.<br>java语言并不是要求常量一定在编译期产生，也就是说并非预置入class文件的常量池的内容才能进入运行常量池，运行期间也可以将新的常量放入池中。例如<code>String的intern()</code>方法<br>这部分会抛出<code>OutOfMemoryError</code>异常</p>
+<h4 id="个人见解："><a href="#个人见解：" class="headerlink" title="个人见解："></a>个人见解：</h4><p><strong>程序计数器</strong>：存放当前线程所执行字节码的行号<br><strong>本地方法栈</strong>：作用与虚拟机栈类似，区别在于执行的为native方法<br><strong>java堆</strong>：存放对象实例<br><strong>方法区</strong>：存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据<br><strong>运行时候常量池</strong>：存放编译期生成的各种字面量和符号的引用和翻译出来的直接引用<br><strong>java虚拟机栈</strong>：描述Java方法执行的内存模型，存放存储局部变量表、操作栈、动态链接、方法出口等信息<br>局部变量表：存放编译期可知的各种基本数据类型（boolean、byte、char、short、int、float、long、double）、对象引用类型和returnAddress类型</p>
+<p>《深入理解java虚拟机（第二版）》周志明 读书笔记<br>近期才开始写博客，有理解错误或者不完善的地方 可以发邮件给我，谢谢<br>wangli_it@163.com</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;Java虚拟机在执行java程序的过程中会把它所管理的内存划分为若干个不同的数据区域，&lt;br&gt;主要包括：&lt;strong&gt;方法区、虚拟机栈、本地方法栈、堆、程序计数器&lt;/strong&gt;。其中，java堆和方法区是&lt;strong&gt;线程共享的数据区&lt;/strong&gt;，其他几个都属于&lt;strong&gt;线程私有的&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&quot;程序计数器&quot;&gt;&lt;a href=&quot;#程序计数器&quot; class=&quot;headerlink&quot; title=&quot;程序计数器:&quot;&gt;&lt;/a&gt;程序计数器:&lt;/h4&gt;&lt;p&gt;程序计数器是一块较小的内存空间，它的作用可以看做是&lt;strong&gt;当前线程所执行的字节码的行号指示器&lt;/strong&gt; ，字节码解释器的工作就是通过改变这个计数器的值来选取下一条需要执行的字节码指令，&lt;strong&gt;分支、循环、跳转、异常处理、线程恢复&lt;/strong&gt;等基础功能都需要依赖这个计数器来完成。&lt;/p&gt;
+&lt;p&gt;如果线程正在执行的是java方法，这个计数器记录的是正在执行的虚拟机字节码指令的地址；如果正在执行的是Native方法，这个计数器的值为空（undefined）&lt;br&gt;此内存区域是&lt;strong&gt;唯一一个&lt;/strong&gt;在Java虚拟机规范中没有规定任何情况的&lt;code&gt;OutofMemoryError&lt;/code&gt;区域&lt;/p&gt;
+&lt;h4 id=&quot;Java虚拟机栈：&quot;&gt;&lt;a href=&quot;#Java虚拟机栈：&quot; class=&quot;headerlink&quot; title=&quot;Java虚拟机栈：&quot;&gt;&lt;/a&gt;Java虚拟机栈：&lt;/h4&gt;&lt;p&gt;虚拟机栈描述的是Java方法执行的内存模型，每个方法被执行的时候都会创建一个线帧，用于存储 &lt;code&gt;局部变量表、操作栈、动态链接、方法出口&lt;/code&gt;等信息。每一个方法 被调用至执行完成的过程，就对应着一个线帧在虚拟机栈中从入栈到出栈的过程。&lt;/p&gt;
+&lt;p&gt;我们通常把Java内存区分为&lt;code&gt;堆内存和栈内存&lt;/code&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;栈内存指的就是现在所讲的虚拟机栈，或者说是   虚拟机栈中局部  变量表部分.&lt;br&gt; 局部变量表所需的内存空间在编译期间完成分配。&lt;br&gt; 在方法运行期间不会改变局部变量表的大小&lt;br&gt; 在java虚拟机栈中，规定了两个异常，&lt;code&gt;StackOverflowError&lt;/code&gt;和  &lt;code&gt;OutOfMemoryError&lt;/code&gt;异常&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="java,虚拟机" scheme="http://yoursite.com/tags/java-%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>跟阿铭学Linux 第三版</title>
