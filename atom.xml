@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-16T06:59:08.000Z</updated>
+  <updated>2017-08-16T10:43:04.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,127 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux命令学习（centos6）</title>
+    <link href="http://yoursite.com/2017/08/16/linux%E5%AD%A6%E4%B9%A0%EF%BC%88centos6%EF%BC%89/"/>
+    <id>http://yoursite.com/2017/08/16/linux学习（centos6）/</id>
+    <published>2017-08-16T08:00:00.000Z</published>
+    <updated>2017-08-16T10:43:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p><code>man</code> ：查看命令的帮助文档<br><code>sudo -s</code>：切换root用户﻿​<br>正确的关机流程为：<code>sync –&gt; shutdown –&gt; reboot –&gt; halt</code><br><code>pwd</code>： 打印出当前所在目录<br><code>mkdir [ 目录名称 ]</code>：  创建目录<br><code>mkdir -p [ 目录名称 ]</code> ：创建级联目录，已存在的目录也不会报错<br><code>touch [ 文件名称 ]</code>： 创建文件<br><code>rm</code>： 删除目录或文件<br><code>rm -r</code>： 询问是否删除<br><code>rm -f</code>： 强制删除<br><code>rm -rf</code>： 删除目录下的所有文件  <strong>慎用慎用</strong><br><code>which</code>： 查找某个命令的绝对路径<br><code>echo $PATH</code>： 打印出环境变量<br><code>PATH=$PATH:/root</code>： 增加’:/root’到环境变量中<br><code>cp [ 来源文件 ] [目的文件]</code>：   拷贝文件<br><code>cp  -r [ 来源文件 ] [目的文件]</code>： 拷贝文件夹<br><code>cp  - i [ 来源文件 ] [目的文件]</code>： 拷贝文件;<br>安全选项：和 ‘rm’类似，如果遇到一个存在的文件，会问是否覆盖<br><code>echo &#39;my name is wang&#39; &gt; test2.txt</code>： 往test2写入内容<br> <code>mv [选项] [源文件][目标文件]</code>：移动文件<br><code>mv -i</code> : 和cp的-i 一样，当目标文件存在时会问用户是否要覆盖<br><code>cat</code>：查看文件内容<br><code>tac</code>：倒叙查看文件内容<br><code>more</code> ：也是用来查看一个文件的内容，后面直接跟文件名，当文件内容太多，一屏幕不能占下，而您用 ‘cat’ 肯定是看不前面的内容的，那么使用 ‘more’ 就可以解决这个问题了。<br>当看完一屏后按空格键继续看下一屏。但看完所有内容后就会退出。如果您想提前退出，只需按 ‘q’ 键即可。<br><code>less</code> ：作用跟<code>more</code>一样，可以支持上下移动，”j”键向下移动，”k”键向上移动，空格翻页。<br>按下”/“键，然后输入一个关键字 可以查找，按”n”键显示下一个。”?”键同样支持搜索，”/“向下查找，”?”是向上查找<br><code>head [文件名]</code>：显示文件的前十行，如果加 <code>-n</code> 选项则显示文件前n行<br> <code>tail [文件名]</code>：显示文件最后十行，如果加 -n选项则显示文件后n行<br><code>tail -f [文件名]</code>：动态显示文件最后十行，可以滚动</p>
+<p><code>groupadd [组名]</code>：添加一个用户组<br><code>chgrp [组名][文件名或文件夹]</code>：更改文件或文件夹所属组，只能更改目录或文件本身<br><code>chgrp -R [组名][文件夹名]</code>：级联更改文件夹所属组（区分大小写）<br>这里的<code>-R</code>选项只作用于目录，作用是级联更改，即不仅更改当前目录，连目录里的目录或者文件全部更改<br><code>chown [-R][账户名][文件名或文件夹]</code> ： 更改文件所属主<br><code>chown [-R][账户名]：[组名][文件名或文件夹]</code>：更改文件所属组</p>
+<blockquote>
+<p><code>r</code> 代表可读<br><code>w</code> 代表可写<br><code>x</code> 代表可执行</p>
+</blockquote>
+<p><code>chmod [xyz][文件名]</code>：（这里的xyz表示数字）赋值权限<br> 默认一个目录的权限为 755，而一个文件的默认权限为644<br><code>chmod -R [xyz][文件名]</code>：级联更改</p>
+<blockquote>
+<p>赋值权限的顺序为 1.user 2.group3.others,<br>我们可以用u,g,o来代表他们的属性. a 则代表 all 亦即全部<br>用法示例：<code>chomd u=rwx,og=r javaMain.java</code><br>减少权限：<code>chomd u-x javaMain.java</code>  去掉取消user的执行权限</p>
+</blockquote>
+<p><code>find [路径][参数]</code> ：查询文件</p>
+<blockquote>
+<p><code>-atime +n/-n</code> ： 访问或执行时间大于/小于n天的文件<br><code>-ctime +n/-n</code> ：写入、更改inode属性（例如更改所有者、权限或者链接）时间大于/小于n天的文件<br><code>-mtime +n/-n</code> ： 写入时间大于/小于n天的文件<br>示例：<code>find wang/ -atime -3</code></p>
+</blockquote>
+<p> <code>find [文件夹]-name [文件名]</code> ：按name查询<br>文件名可为空，为空时在当前目录下搜索<br><code>find [文件夹]-type [文件类型]</code>  ：按type查询</p>
+<blockquote>
+<p>文件类型 包含了 <code>f, b, c, d, l, s</code> 等<br> 示例： <code>find selfloan/ -type f</code><br><code>d</code> 表示该文件为目录；<br><code>f</code>或者<code>-</code> 表示该文件为普通文件；<br><code>l</code> 表示该文件为链接文件（linux file），上边提到的软链接即为该类型；<br><code>b</code> 表示该文件为块设备，比如 /dev/sda 就是这样的文件。<br><code>c</code> 表示该文件为串行端口设备，例如键盘、鼠标。<br><code>s</code> 表示该文件为套接字文件（socket），用于进程间通信。</p>
+</blockquote>
+<p> <code>|</code>：管道符，把前面命令的输出再输入给后面的命令</p>
+<p><code>groupadd [-g Gid] [组名]</code> ：创建组<br>不加 “-g” 选项则按照系统默认的gid创建组，跟用户一样，gid也是从500开始的<br><code>groupdel [组名]</code>：删除组（删除有账户的组，必须先删除组内的账户）<br><code>useradd [-u UID] [-g GID] [-d HOME] [-M] [-s]</code> ：新增用户<br>‘useradd’ 不加任何选项直接跟用户名，则会创建一个跟用户名同样名字的组。</p>
+<blockquote>
+<p><code>-u</code> 自定义UID<br><code>-g</code> 使其属于已经存在的某个组，后面可以跟组id, 也可以跟组名<br><code>-d</code> 自定义用户的家目录<br><code>-M</code> 不建立家目录<br><code>-s</code> 自定义shell</p>
+</blockquote>
+<p><code>userdel [-r] [用户名]</code>： 删除账户</p>
+<blockquote>
+<p><code>-r</code> 删除账户时连带账户的家目录一起删除</p>
+</blockquote>
+<p><code>passwd [用户名]</code>： 创建/修改一个用户的密码<br>passwd后面不加用户名则是修改当前用户的密码<br>只有root用户，才可以更改其他账户的密码，普通账户只能更改自己的密码</p>
+<p>磁盘管理<br><code>df [ -i h k m ]</code>： 查看已挂载磁盘的总容量、使用容量、剩余容量。默认单位为K</p>
+<blockquote>
+<p><code>-i</code> 查看inodes使用状况<br><code>-h</code> 系统自动调节， 示例 df -h<br><code>-k</code> 和<code>-m</code> 分别以K，M为单位显示</p>
+</blockquote>
+<p>图示<br><a href="http://oursdj9xa.bkt.clouddn.com/1499941101242_2.png" target="_blank" rel="external">http://oursdj9xa.bkt.clouddn.com/1499941101242_2.png</a></p>
+<blockquote>
+<p><code>Filesystem</code>列 是分区的名字<br><code>Size</code> 为该分区总共的容量<br><code>Used</code> 为已经使用了多少<br><code>Avail</code> 为还剩下多少<br><code>Use%</code> 为已经使用百分比<br><code>Mounted on</code> 为挂载点。<br><code>/dev/shm</code> 为内存挂载点，如果您想把文件放到内存里，就可以放到<code>/dev/shm/</code>目录下</p>
+</blockquote>
+<p><code>du [-a b c k m s h] [文件或目录名]</code>： 查看某个目录或文件所占空间大小</p>
+<blockquote>
+<p><code>-a</code> 全部文件与目录大小都列出来。如果不加任何选项和参数只列出目录（包含子目录）大小<br><code>-b</code> 列出的值以bytes为单位输出<br><code>-k</code> 以KB为单位输出(默认)<br><code>-m</code> 以MB为单位输出<br><code>-h</code> 系统自动调节单位，例如文件太小可能就几K，那么就以K为单位显示，如果大到几G，则就以G为单位显示<br><code>-c</code> 最后加总<br><code>-s</code> 只列出总和<br><code>-c</code> 最后加总<br><code>-s</code> 只列出总和</p>
+</blockquote>
+<p><code>fdisk [-l][设备名称]</code>： 列出系统中的磁盘设备以及分区表</p>
+<blockquote>
+<p><code>-l</code> 后边不跟设备名会直接列出系统中所有的磁盘设备以及分区表，加上设备名会列出该设备的分区表。</p>
+</blockquote>
+<p><code>mount</code> ：查看当前系统已经挂载的所有分区 ,以及分区文件系统的类型，挂载点和一些选项等信息</p>
+<p><code>scp [目标文件路径][服务器username]@[服务器地址]：[上传后存放路径]</code>：上传文件</p>
+<blockquote>
+<p>示例：scp /Users/wang/wa/target/wantu.jar root@192.168.0.211:.</p>
+</blockquote>
+<p><code>scp [服务器username]@[服务器地址]:[目标文件路径] 空格[下载后存放路径][新文件名]</code>：下载文件</p>
+<blockquote>
+<p>下载后存放路径 可省咯，默认为当前目录<br>示例: scp wang@121.41.11.112:/root/fix.log  fix.txt </p>
+</blockquote>
+<h4 id="vim的快捷键"><a href="#vim的快捷键" class="headerlink" title="vim的快捷键"></a>vim的快捷键</h4><p><strong> 一般模式下移动光标</strong><br><code>&gt;h / 左方向键</code> ：光标向左移动一个字符<br><code>j / 下方向键</code> ：光标向下移动一个字符<br><code>k / 上方向键</code> ：光标向上移动一个字符<br><code>l / 右方向键</code> ：光标向右移动一个字符<br><code>ctrl+f /pageUp</code> ：屏幕向前移动一页<br><code>ctrl+b /pageDown</code>：屏幕向后移动一页<br><code>数字0 /shift+6</code> ：移动到本行 行首<br><code>shift+4</code> ：移动到本行 行尾<br><code>G</code> ：光标移动到文本最末行<br><code>nG</code> ：（n是数字）移动到该文本的第n行<br><code>gg</code> ： 移动到该文本的首行</p>
+<p><strong> 一般模式下查找与替换</strong></p>
+<blockquote>
+<p><code>/word</code> ：向光标之后寻找一个字符串为 <code>word</code>的字符串，当找到一个word之后，按 n键继续查找<br><code>?word</code> ：使用方法同上<br><code>:n1,n2s/word1/word2/g</code>：在n1和n2行间查找word1字符，并替换为word2.可以用#代替/<br>    示例： <code>:210,245s/echo/echo2/g</code><br><code>:1,$s/word1/word2/g</code> ：从第一行到最末行</p>
+</blockquote>
+<p><strong>一般模式下删除、复制粘贴</strong></p>
+<blockquote>
+<p><code>x,X</code> ：x为向后删除一个字符，X为向前删除一个字符<br><code>dd</code>：删除光标所在的那行<br><code>ndd</code>：n为数字，删除光标所在的向下n行<br><code>yy</code>：复制光标所在行的数据<br><code>nyy</code>：复制从光标所在行起向下n行<br><code>p或P</code>: p复制的数据从光标下一行粘贴，P从光标上一行粘贴</p>
+</blockquote>
+<p><strong> 进入编辑模式</strong><br><code>i</code>：在当前字符前插入字符<br><code>I</code>：在当前行行首插入字符<br><code>a</code>：在当前字符后插入字符<br><code>A</code>：在当前行行末插入字符<br><code>o</code>：……..行下插入新的一行<br><code>O</code>：……….上……….<br><code>uu</code> ：还原上一次操作</p>
+<p><strong> 命令模式</strong></p>
+<blockquote>
+<p><code>:w</code>  ：将编译过的文本保存<br><code>:w!</code> ：若文本属性为只读时，强制保存<br><code>:q</code>  ：退出vim<br><code>:q!</code> ：不管编辑或未编辑都不保存退出<br><code>:wq</code> ：保存，退出<br><code>:set nu</code> ：显示行号<br><code>:set nonu</code> ：取消行号</p>
+</blockquote>
+<h4 id="文件压缩"><a href="#文件压缩" class="headerlink" title="文件压缩"></a>文件压缩</h4><blockquote>
+<p><code>.gz</code> gzip压缩工具压缩的文件<br><code>.bz2</code> bzip2压缩工具压缩的文件<br><code>.tar</code> tar打包程序打包的文件(tar并没有压缩功能，只是把一个目录合并成一个文件)<br><code>.tar.gz</code> 可以理解为先用tar打包，然后再gzip压缩<br><code>.tar.bz2</code> 同上，先用tar打包，然后再bzip2压缩</p>
+</blockquote>
+<p><code>gzip [-d#] [文件名]</code> ：压缩文件(此命令不可以压缩文件夹)</p>
+<blockquote>
+<p><code>-d</code> ：解压时使用<br><code>-#</code>：压缩等级，1压缩最差，9压缩最好，默认为6.很少使用<br>示例：<code>gzip test.txt</code><br>解压：<code>gzip -d test.txt.gz</code></p>
+</blockquote>
+<p><code>bzip2 [-dz][文件名]</code> ：压缩/解压 文件(不支持压缩文件夹)</p>
+<blockquote>
+<p><code>-d</code>：解压<br><code>-z</code>：压缩(可省略，默认为压缩)<br>示例：<code>bzip2 newFile.txt</code><br>解压：<code>bzip2 -d newFile.txt.bz2</code></p>
+</blockquote>
+<p><code>tar [-zjxcvfpP] [文件或文件夹名称]</code> ：压缩、解压</p>
+<blockquote>
+<p>﻿<code>-z</code>﻿: 同时用gzip压缩<br><code>-j</code>:  同时用bzip2压缩<br><code>-x</code>: 解包或解压<br><code>-t</code>: 查看tar包里的文件(需配合f一起使用)<br>示例：<code>tar -tf test.tar</code><br><code>-c</code>: 建立一个tar包或压缩包文件<br><code>-v</code>: 可视化<br><code>-f</code>: 后面加文件名。压缩时 后面文件名为压缩后的名称；<br>解压时 后面文件名为需解压文件名。有多个参数组合时，将 f 写在最后<br><code>-p</code>: 使用原文件属性(不常用)<br><code>-P</code>：使用绝对路径(不常用)<br>示例：<code>tar -cvf tarTest20.tar newFile.txt tempData tarTest2.tar</code><br>ps: <code>tarTest20.tar</code> 为压缩后新文件名称；<br>需压缩的文件为 <code>newFile.txt tempData</code> 和<code>tarTest2.tar</code><br>解压：<code>tar -xvf tarTest20.tar</code></p>
+</blockquote>
+<p><strong>打包时使用gzip压缩</strong></p>
+<blockquote>
+<p>示例： <code>tar -czvf tarTest29.tar.gz newFile.txt tarTestDir/</code><br>ps：将<code>newFile.txt、 tarTestDir</code> 打包并压缩为 <code>tarTest29.gz</code><br>解压：<code>tar -zxvf tarTest29.tar.gz</code><br><code>tar -tf tarTest29.tar.gz</code>： 可以查看包内文件</p>
+</blockquote>
+<p><strong>exclude选项</strong><br><code>tar -cvf [新文件名] --exclude [需排除的文件或文件名]  [需压缩的文件夹]</code><br>示例：<code>tar -cvf dir42.tar --exclude tarTest.txt tarTestDir</code> </p>
+<h4 id="shell-脚本"><a href="#shell-脚本" class="headerlink" title="shell 脚本"></a>shell 脚本</h4><p><code>!!</code>： 两个连续！表示执行上一条指令<br><code>!n</code>： 这里的n是数字，表示执行命令历史中的第n条指令<br><code>!字符串</code> ，例如!ls 表示执行命令历史中最新一次 以’ls’开头的指令<br><code>tab</code> 指令或文件夹补全，连续按两次tab 键，系统则会把所有的指令或文件夹都列出来<br><code>别名</code>：通过别名把很长并且常用的指令设置为一个简洁的指令，<br><code>alias [命令别名]=[&#39;具体的命令&#39;]</code>：设置别名  例：<code>alias wang = &#39;ls -l&#39;</code><br>取消别名：<code>unalias [命令别名]</code></p>
+<p> 在bash下，可以使用 <code>*</code> 来匹配零个或多个字符，而用 <code>?</code> 匹配一个字符<br>管道符 <code>|</code>, 就是把前面的命令运行的结果丢给后面的命令<br> 作业控制：<br>当运行一个进程时，您可以使它暂停（<code>Ctrl+z</code>），然后使用 <code>fg</code> 命令恢复它，利用 <code>bg</code> 命令使他到后台运行，<br>您也可以使它终止（<code>Ctrl+c</code>）</p>
+<p><code>kill [pid]</code>： 杀掉进程<br>kill命令语法很简单，直接在后面加pid即可，<br>如果遇到杀不死的进程时，可以在kill 后面加一个选项： <code>kill -9 [pid]</code></p>
+<h4 id="不常用"><a href="#不常用" class="headerlink" title="不常用"></a>不常用</h4><p> <code>umask</code>：上边两条规则中的默认值（文件为666，目录为777）需要减掉的权限。默认为0022<br> <code>chattr [+-=][ASaci [文件或者目录名]</code>： 追加或删除特殊属性</p>
+<blockquote>
+<p><code>+-=</code> : 分别为增加、减少、设定<br><code>A</code> : 增加该属性后，文件或目录的atime将不可被修改；<br><code>S</code> : 增加该属性后，会将数据同步写入磁盘中；<br><code>a</code> : 增加该属性后，只能追加不能删除，非root用户不能设定该属性；<br><code>c</code> : 自动压缩该文件，读取时会自动解压；<br><code>i</code> : 增加后，使文件不能被删除、重命名、设定链接接、写入、新增数据；</p>
+</blockquote>
+<p> <code>lsattr[-aR] [文件/目录名]</code>：用来读取文件或者目录的特殊权限</p>
+<blockquote>
+<p><code>-a</code> : 类似与ls 的-a 选项，即连同隐藏文件一同列出；<br><code>-R</code> : 连同子目录的数据一同列出</p>
+</blockquote>
+<p> 《跟阿铭学Linux（第二版）》李世明 读书笔记<br>因近期买了第三版，此篇将不再更新，后续将有一篇基于Linux7的笔记。</p>
+<p>本文的示例 都是我测试过的，发布的时候转markdown版本，不免会有些问题。有理解错误或者不完善的地方 欢迎可以发邮件给我，谢谢<br>wangli_it@163.com</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h4 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h4&gt;&lt;p&gt;&lt;code&gt;man&lt;/code&gt; ：查看命令的帮助文档&lt;br&gt;&lt;code&gt;sudo -s&lt;/code&gt;：切换roo
+    
+    </summary>
+    
+    
+      <category term="linux,centos6" scheme="http://yoursite.com/tags/linux-centos6/"/>
+    
+  </entry>
   
   <entry>
     <title>java虚拟机运行时内存分区</title>
