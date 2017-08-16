@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-16T03:27:34.000Z</updated>
+  <updated>2017-08-16T03:35:21.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/08/16/learn-linux-with-aming/"/>
     <id>http://yoursite.com/2017/08/16/learn-linux-with-aming/</id>
     <published>2017-08-16T01:00:00.000Z</published>
-    <updated>2017-08-16T03:27:34.000Z</updated>
+    <updated>2017-08-16T03:35:21.000Z</updated>
     
     <content type="html"><![CDATA[<a id="more"></a>
 <h5 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h5><p><code>ctrl+c</code>:结束当前指令，如果你输入了一大串命令，但是并不想执行，就可以按下 Ctrl+c，光标会跳到下一行，并在刚刚结束的地方 打上一个 ^C的标记<br><code>Ctrl+D</code>:退出当前终端，也可以用 exit来退出<br><code>Ctrl+Z</code>:暂停当前进程，和Ctrl+C不一样，暂停后，可以用fg指令恢复该进程<br><code>Ctrl+L</code>:清屏，clear指令也有同样的功能<br><code>Ctrl+A</code>:可以让光标移动到命令的最前面（第一个字符）<br><code>Ctrl+E</code>:将光标移动到命令最后面</p>
