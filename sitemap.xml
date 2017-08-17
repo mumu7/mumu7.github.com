@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/08/17/%E8%B7%9F%E9%98%BF%E9%93%AD%E5%AD%A6linux%E7%AC%AC%E4%B8%89%E7%89%88/</loc>
+    
+    <lastmod>2017-08-17T11:03:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/08/16/linux%E5%AD%A6%E4%B9%A0%EF%BC%88centos6%EF%BC%89/</loc>
     
     <lastmod>2017-08-16T10:57:27.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://yoursite.com/2017/08/16/java%E8%99%9A%E6%8B%9F%E6%9C%BA/</loc>
     
     <lastmod>2017-08-16T10:46:00.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/08/16/learn-linux-with-aming/</loc>
-    
-    <lastmod>2017-08-16T04:05:49.000Z</lastmod>
     
   </url>
   

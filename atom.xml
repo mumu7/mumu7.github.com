@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-16T10:57:27.000Z</updated>
+  <updated>2017-08-17T11:03:20.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,127 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2017/08/17/%E8%B7%9F%E9%98%BF%E9%93%AD%E5%AD%A6linux%E7%AC%AC%E4%B8%89%E7%89%88/"/>
+    <id>http://yoursite.com/2017/08/17/跟阿铭学linux第三版/</id>
+    <published>2017-08-17T11:01:38.000Z</published>
+    <updated>2017-08-17T11:03:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="跟阿铭学Linux-第三版"><a href="#跟阿铭学Linux-第三版" class="headerlink" title="跟阿铭学Linux 第三版"></a>跟阿铭学Linux 第三版</h1><hr>
+<p>title: 跟阿铭学Linux 第三版<br>date: 2017-08-17 19:01:38</p>
+<h2 id="tags-linux-阿铭-第三版"><a href="#tags-linux-阿铭-第三版" class="headerlink" title="tags:linux,阿铭,第三版"></a>tags:linux,阿铭,第三版</h2><hr>
+<h5 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h5><p><code>ctrl+c</code>:结束当前指令，如果你输入了一大串命令，但是并不想执行，就可以按下 Ctrl+c，光标会跳到下一行，并在刚刚结束的地方 打上一个 ^C的标记<br><code>Ctrl+D</code>:退出当前终端，也可以用 exit来退出<br><code>Ctrl+Z</code>:暂停当前进程，和Ctrl+C不一样，暂停后，可以用fg指令恢复该进程<br><code>Ctrl+L</code>:清屏，clear指令也有同样的功能<br><code>Ctrl+A</code>:可以让光标移动到命令的最前面（第一个字符）<br><code>Ctrl+E</code>:将光标移动到命令最后面</p>
+<h5 id="查询帮助文档"><a href="#查询帮助文档" class="headerlink" title="查询帮助文档"></a>查询帮助文档</h5><p><code>man</code>： 用于查看命令的帮助文档 例：<code>man ls</code><br><code>ls [-a/l/d]</code>：列出当前目录下的目录和文件，不包含隐藏文件</p>
+<blockquote>
+<p><code>-a</code>：列出当目录下的所有文件和目录，包含隐藏文件<br><code>-l</code>：列出当前目录下出隐藏文件外的所有文件和目录，包含 权限、所属主、所属组及文件创建时间<br><code>-d</code>：<br><code>ls [文件名]</code>：会列出指定目录下的文件和目录</p>
+</blockquote>
+<h5 id="linux下重要的系统目录"><a href="#linux下重要的系统目录" class="headerlink" title="linux下重要的系统目录"></a>linux下重要的系统目录</h5><p><code>/etc</code>：存放系统的配置文件，如果更改了该目录下得某个文件，可能导致系统无法正常启动<br><code>/bin和/usr/bin</code>：存放供除root外的普通用户使用的指令<br><code>/sbin和/usr/sbin</code>：是供root用户使用的指令<br><code>/var</code>：也是一个重要的目录，系统上运行各个程序所产生的日志都记录在该目录下(/var/log) 。mail指令的预设也放置在这里</p>
+<h4 id="linux下文件目录管理"><a href="#linux下文件目录管理" class="headerlink" title="linux下文件目录管理"></a>linux下文件目录管理</h4><p><code>mkdir [-mp][目录名称]</code>：创建目录</p>
+<blockquote>
+<p><code>-m</code>：指定创建目录的权限（不常用）<br><code>-p</code>：级联创建目录，并且当创建一个已经存在的目录时，不会报错<br>示例：<code>mkdir -p /temp/test</code></p>
+</blockquote>
+<p><code>rmdir [目录名]</code>：删除目录，不可以删除文件和空目录（不常用）<br><code>rm [文件/目录]</code>：删除文件或目录</p>
+<blockquote>
+<p><code>-r</code>：删除目录的选项，类似rmdir，但可以删除空目录。rm -r可以删除非空目录<br><code>-i</code>会询问是否删除，y确定。<br><code>-f</code>：表示强制删除，不再询问是否删除。如果后面跟一个不存在的目录或文件，则不会报错,但是这个命令只能删除文件<br><code>-rf</code>：删除文件或目录，rm -rf 后面不能加”/“,否则会把你的系统文件全部删掉，<strong>非常危险.慎用慎用</strong></p>
+</blockquote>
+<p><code>which</code>：查询命令的绝对路径（不常用）<br><code>echo $PATH</code>：查看环境变量<br><code>cp [-r/i/][来源文件][目的文件]</code>：复制文件/目录</p>
+<blockquote>
+<p><code>-r</code>：如果要复制一个目录，必须加-r选项，否则不能复制，类似rm 命令<br><code>-i</code>：这是一个安全选项，如果遇到一个已存在的文件，会询问是否覆盖</p>
+</blockquote>
+<p><code>mv [选项][源文件或目录][目标文件或目录]</code>：移动文件/目录</p>
+<blockquote>
+<ol>
+<li>当目标为目录，且目录存在：会把源文件或目录移动到该目录中</li>
+<li>当目标为目录，且目录不存在：则会把源目录重命名为新的目标文件名</li>
+<li>当目标为文件，且文件存在：则会询问是否覆盖</li>
+<li>当目标为文件，且文件不存在： 则会把源文件重命名为新的目标文件名</li>
+</ol>
+</blockquote>
+<h4 id="文档相关的命令"><a href="#文档相关的命令" class="headerlink" title="文档相关的命令"></a>文档相关的命令</h4><p><code>cat [选项][文件名]</code>：正序查看文件内容</p>
+<blockquote>
+<p><code>-n</code>：查看文件时，把行号也显示在屏幕上<br><code>-A</code>：显示所有内容，包括特殊字符</p>
+</blockquote>
+<p><code>tac [文件名]</code>：倒序查看文件内容<br><code>more [文件名]</code>：查看文件内容</p>
+<blockquote>
+<p>当文件内容太多，一屏不能全部显示时，可以用<code>more</code>命令，<br>当看完一屏之后，按空格键翻页，<code>Ctrl+D</code>向上翻页，<code>Ctrl+F</code>向下翻页</p>
+</blockquote>
+<p><code>less [文件名]</code>：作用和<code>more</code>一样。空格键翻页，<code>j</code>键向下移动，<code>k</code>键向上移动。<code>/[字符串]</code>可以查找，按<code>n</code>显示下一个。<br>也可以用<code>?[字符串]</code>查找，唯一不同的是：<code>/[字符串]</code>是当前向下搜索，<code>?[字符串]</code>是向上搜索</p>
+<p><code>head [-n][数字][文件名]</code>：直接跟文件名，默认显示文件前10行。也可以去掉<code>-n</code>  直接加数字。<br>示例：<code>head -n 200 test.txt</code><br>      <code>head -200 test.txt</code><br><code>tail [-n][数字][文件名]</code>：和<code>head</code>命令类似，默认显示文件最后十行，如果加上<code>-n</code>选项，则会显示最后几行<br><code>tail -f [文件名]</code>：动态显示文件最后十行，可以滚动</p>
+<a id="more"></a>
+<h4 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h4><p><code>chgrp [组名][文件名或文件夹]</code> ：更改文件或文件夹所属组，只能更改目录或文件本身<br><code>chgrp -R [组名][文件夹名]</code>：级联更改文件夹所属组（区分大小写）</p>
+<blockquote>
+<p>这里的-R选项只作用于目录，作用是级联更改，即不仅更改当前目录，连目录里的目录或者文件全部更改</p>
+</blockquote>
+<p><code>chgrp</code> 命令<strong>不常用</strong>，可以用<code>chown</code>代替</p>
+<p><code>chown [-R][账户名/账户名:组名][文件名]</code>：更改文件所有者</p>
+<blockquote>
+<p><code>-R</code>：级联修改</p>
+</blockquote>
+<p><code>chmod [xyz][文件名]</code>：（这里的xyz表示数字）赋值权限</p>
+<blockquote>
+<p><code>Linux</code>用数字代替<code>rwx</code>，具体规则为：<code>r=4,w=2,x=1</code><br>默认一个目录的权限为 755，而一个文件的默认权限为644<br><code>r</code> 代表可读<br><code>w</code>代表可写<br><code>x</code>代表可执行<br>赋值权限的顺序为 <code>1.user 2.group 3.others</code>,我们可以用<code>u,g,o</code>来代表他们的属性. a 则代表 all 亦即全部<br>用法示例：<code>chomd u=rwx,og=r javaMain.java</code><br>减少权限：<code>chomd u-x javaMain.java</code>  去掉取消user的执行权限</p>
+</blockquote>
+<h4 id="修改文件的特殊属性"><a href="#修改文件的特殊属性" class="headerlink" title="修改文件的特殊属性"></a>修改文件的特殊属性</h4><p><code>chattr[+-=][Asaci][文件名/目录]</code>：修改文件特殊属性，<br>其中<code>+-=</code>分别表示增加、减少和设定</p>
+<blockquote>
+<p><code>A</code>：增加该属性后，表示文件或目录的atime将不可修改<br><code>s</code>：增加该属性后，会将数据同步写入磁盘中<br><code>a</code>：增加该属性后，表示只能追加不能删除，非root用户不能设定该属性<br><code>c</code>：增加该属性后，表示自动压缩该文件，读取时会自动解压<br><code>i</code>：增加该属性后，表示文件不能<strong>删除、重命名、设定链接、写入及新增数据</strong><br>以上选项中，常用的为<code>a</code>和<code>i</code></p>
+</blockquote>
+<p><img src="http://oursdj9xa.bkt.clouddn.com/757FCE82-4A1B-44EB-979B-AFA19A03EAB8.png" alt="i权限"><br>上例中：给tempData增加<code>i</code>权限后，即使是root用户，也无法在tempData中创建文件</p>
+<p><img src="http://oursdj9xa.bkt.clouddn.com/D1E1605F-16D2-4C79-96B0-0AD955D7566B.png" alt="a权限"><br>上例中：给temp增加<code>a</code>权限后，只可以在里面创建文件，而不能删除文件<br>文件也一样，当增加<code>a</code>权限后不能写入内容，只能查看；增加<code>i</code>权限后，不能写入和删除</p>
+<p><code>lsattr[-aR][文件/目录名]</code>：读取文件或目录的特殊权限</p>
+<blockquote>
+<p><code>-a</code>：类似于<code>ls -a</code>选项，连同隐藏文件一同列出<br><code>-R</code>：连同字母的数据一同列出</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;跟阿铭学Linux-第三版&quot;&gt;&lt;a href=&quot;#跟阿铭学Linux-第三版&quot; class=&quot;headerlink&quot; title=&quot;跟阿铭学Linux 第三版&quot;&gt;&lt;/a&gt;跟阿铭学Linux 第三版&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;title: 跟阿铭学Linux 第三版&lt;br&gt;date: 2017-08-17 19:01:38&lt;/p&gt;
+&lt;h2 id=&quot;tags-linux-阿铭-第三版&quot;&gt;&lt;a href=&quot;#tags-linux-阿铭-第三版&quot; class=&quot;headerlink&quot; title=&quot;tags:linux,阿铭,第三版&quot;&gt;&lt;/a&gt;tags:linux,阿铭,第三版&lt;/h2&gt;&lt;hr&gt;
+&lt;h5 id=&quot;使用快捷键&quot;&gt;&lt;a href=&quot;#使用快捷键&quot; class=&quot;headerlink&quot; title=&quot;使用快捷键&quot;&gt;&lt;/a&gt;使用快捷键&lt;/h5&gt;&lt;p&gt;&lt;code&gt;ctrl+c&lt;/code&gt;:结束当前指令，如果你输入了一大串命令，但是并不想执行，就可以按下 Ctrl+c，光标会跳到下一行，并在刚刚结束的地方 打上一个 ^C的标记&lt;br&gt;&lt;code&gt;Ctrl+D&lt;/code&gt;:退出当前终端，也可以用 exit来退出&lt;br&gt;&lt;code&gt;Ctrl+Z&lt;/code&gt;:暂停当前进程，和Ctrl+C不一样，暂停后，可以用fg指令恢复该进程&lt;br&gt;&lt;code&gt;Ctrl+L&lt;/code&gt;:清屏，clear指令也有同样的功能&lt;br&gt;&lt;code&gt;Ctrl+A&lt;/code&gt;:可以让光标移动到命令的最前面（第一个字符）&lt;br&gt;&lt;code&gt;Ctrl+E&lt;/code&gt;:将光标移动到命令最后面&lt;/p&gt;
+&lt;h5 id=&quot;查询帮助文档&quot;&gt;&lt;a href=&quot;#查询帮助文档&quot; class=&quot;headerlink&quot; title=&quot;查询帮助文档&quot;&gt;&lt;/a&gt;查询帮助文档&lt;/h5&gt;&lt;p&gt;&lt;code&gt;man&lt;/code&gt;： 用于查看命令的帮助文档 例：&lt;code&gt;man ls&lt;/code&gt;&lt;br&gt;&lt;code&gt;ls [-a/l/d]&lt;/code&gt;：列出当前目录下的目录和文件，不包含隐藏文件&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;-a&lt;/code&gt;：列出当目录下的所有文件和目录，包含隐藏文件&lt;br&gt;&lt;code&gt;-l&lt;/code&gt;：列出当前目录下出隐藏文件外的所有文件和目录，包含 权限、所属主、所属组及文件创建时间&lt;br&gt;&lt;code&gt;-d&lt;/code&gt;：&lt;br&gt;&lt;code&gt;ls [文件名]&lt;/code&gt;：会列出指定目录下的文件和目录&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&quot;linux下重要的系统目录&quot;&gt;&lt;a href=&quot;#linux下重要的系统目录&quot; class=&quot;headerlink&quot; title=&quot;linux下重要的系统目录&quot;&gt;&lt;/a&gt;linux下重要的系统目录&lt;/h5&gt;&lt;p&gt;&lt;code&gt;/etc&lt;/code&gt;：存放系统的配置文件，如果更改了该目录下得某个文件，可能导致系统无法正常启动&lt;br&gt;&lt;code&gt;/bin和/usr/bin&lt;/code&gt;：存放供除root外的普通用户使用的指令&lt;br&gt;&lt;code&gt;/sbin和/usr/sbin&lt;/code&gt;：是供root用户使用的指令&lt;br&gt;&lt;code&gt;/var&lt;/code&gt;：也是一个重要的目录，系统上运行各个程序所产生的日志都记录在该目录下(/var/log) 。mail指令的预设也放置在这里&lt;/p&gt;
+&lt;h4 id=&quot;linux下文件目录管理&quot;&gt;&lt;a href=&quot;#linux下文件目录管理&quot; class=&quot;headerlink&quot; title=&quot;linux下文件目录管理&quot;&gt;&lt;/a&gt;linux下文件目录管理&lt;/h4&gt;&lt;p&gt;&lt;code&gt;mkdir [-mp][目录名称]&lt;/code&gt;：创建目录&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;-m&lt;/code&gt;：指定创建目录的权限（不常用）&lt;br&gt;&lt;code&gt;-p&lt;/code&gt;：级联创建目录，并且当创建一个已经存在的目录时，不会报错&lt;br&gt;示例：&lt;code&gt;mkdir -p /temp/test&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;rmdir [目录名]&lt;/code&gt;：删除目录，不可以删除文件和空目录（不常用）&lt;br&gt;&lt;code&gt;rm [文件/目录]&lt;/code&gt;：删除文件或目录&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;-r&lt;/code&gt;：删除目录的选项，类似rmdir，但可以删除空目录。rm -r可以删除非空目录&lt;br&gt;&lt;code&gt;-i&lt;/code&gt;会询问是否删除，y确定。&lt;br&gt;&lt;code&gt;-f&lt;/code&gt;：表示强制删除，不再询问是否删除。如果后面跟一个不存在的目录或文件，则不会报错,但是这个命令只能删除文件&lt;br&gt;&lt;code&gt;-rf&lt;/code&gt;：删除文件或目录，rm -rf 后面不能加”/“,否则会把你的系统文件全部删掉，&lt;strong&gt;非常危险.慎用慎用&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;which&lt;/code&gt;：查询命令的绝对路径（不常用）&lt;br&gt;&lt;code&gt;echo $PATH&lt;/code&gt;：查看环境变量&lt;br&gt;&lt;code&gt;cp [-r/i/][来源文件][目的文件]&lt;/code&gt;：复制文件/目录&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;-r&lt;/code&gt;：如果要复制一个目录，必须加-r选项，否则不能复制，类似rm 命令&lt;br&gt;&lt;code&gt;-i&lt;/code&gt;：这是一个安全选项，如果遇到一个已存在的文件，会询问是否覆盖&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;mv [选项][源文件或目录][目标文件或目录]&lt;/code&gt;：移动文件/目录&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;当目标为目录，且目录存在：会把源文件或目录移动到该目录中&lt;/li&gt;
+&lt;li&gt;当目标为目录，且目录不存在：则会把源目录重命名为新的目标文件名&lt;/li&gt;
+&lt;li&gt;当目标为文件，且文件存在：则会询问是否覆盖&lt;/li&gt;
+&lt;li&gt;当目标为文件，且文件不存在： 则会把源文件重命名为新的目标文件名&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;文档相关的命令&quot;&gt;&lt;a href=&quot;#文档相关的命令&quot; class=&quot;headerlink&quot; title=&quot;文档相关的命令&quot;&gt;&lt;/a&gt;文档相关的命令&lt;/h4&gt;&lt;p&gt;&lt;code&gt;cat [选项][文件名]&lt;/code&gt;：正序查看文件内容&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;-n&lt;/code&gt;：查看文件时，把行号也显示在屏幕上&lt;br&gt;&lt;code&gt;-A&lt;/code&gt;：显示所有内容，包括特殊字符&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;tac [文件名]&lt;/code&gt;：倒序查看文件内容&lt;br&gt;&lt;code&gt;more [文件名]&lt;/code&gt;：查看文件内容&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当文件内容太多，一屏不能全部显示时，可以用&lt;code&gt;more&lt;/code&gt;命令，&lt;br&gt;当看完一屏之后，按空格键翻页，&lt;code&gt;Ctrl+D&lt;/code&gt;向上翻页，&lt;code&gt;Ctrl+F&lt;/code&gt;向下翻页&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;less [文件名]&lt;/code&gt;：作用和&lt;code&gt;more&lt;/code&gt;一样。空格键翻页，&lt;code&gt;j&lt;/code&gt;键向下移动，&lt;code&gt;k&lt;/code&gt;键向上移动。&lt;code&gt;/[字符串]&lt;/code&gt;可以查找，按&lt;code&gt;n&lt;/code&gt;显示下一个。&lt;br&gt;也可以用&lt;code&gt;?[字符串]&lt;/code&gt;查找，唯一不同的是：&lt;code&gt;/[字符串]&lt;/code&gt;是当前向下搜索，&lt;code&gt;?[字符串]&lt;/code&gt;是向上搜索&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;head [-n][数字][文件名]&lt;/code&gt;：直接跟文件名，默认显示文件前10行。也可以去掉&lt;code&gt;-n&lt;/code&gt;  直接加数字。&lt;br&gt;示例：&lt;code&gt;head -n 200 test.txt&lt;/code&gt;&lt;br&gt;      &lt;code&gt;head -200 test.txt&lt;/code&gt;&lt;br&gt;&lt;code&gt;tail [-n][数字][文件名]&lt;/code&gt;：和&lt;code&gt;head&lt;/code&gt;命令类似，默认显示文件最后十行，如果加上&lt;code&gt;-n&lt;/code&gt;选项，则会显示最后几行&lt;br&gt;&lt;code&gt;tail -f [文件名]&lt;/code&gt;：动态显示文件最后十行，可以滚动&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Linux命令学习（centos6）</title>
@@ -185,31 +306,6 @@
     
     
       <category term="java,虚拟机" scheme="http://yoursite.com/tags/java-%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>跟阿铭学Linux 第三版</title>
-    <link href="http://yoursite.com/2017/08/16/learn-linux-with-aming/"/>
-    <id>http://yoursite.com/2017/08/16/learn-linux-with-aming/</id>
-    <published>2017-08-16T01:00:00.000Z</published>
-    <updated>2017-08-16T04:05:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<h5 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h5><p><code>ctrl+c</code>:结束当前指令，如果你输入了一大串命令，但是并不想执行，就可以按下 Ctrl+c，光标会跳到下一行，并在刚刚结束的地方 打上一个 ^C的标记<br><code>Ctrl+D</code>:退出当前终端，也可以用 exit来退出<br><code>Ctrl+Z</code>:暂停当前进程，和Ctrl+C不一样，暂停后，可以用fg指令恢复该进程<br><code>Ctrl+L</code>:清屏，clear指令也有同样的功能<br><code>Ctrl+A</code>:可以让光标移动到命令的最前面（第一个字符）<br><code>Ctrl+E</code>:将光标移动到命令最后面</p>
-<h5 id="查询帮助文档"><a href="#查询帮助文档" class="headerlink" title="查询帮助文档"></a>查询帮助文档</h5><p><code>man</code>： 用于查看命令的帮助文档 例：<code>man ls</code><br><code>ls</code>：列出当前目录下的目录和文件，不包含隐藏文件<br><code>ls -a</code>：列出当目录下的所有文件和目录，包含隐藏文件<br><code>ls -l</code>：列出当前目录下出隐藏文件外的所有文件和目录，包含 权限、所属主、所属组及文件创建时间<br><code>ls [文件名]</code>：会列出指定目录下的文件和目录</p>
-<a id="more"></a>
-<p>#####linux下重要的系统目录<br><code>/etc</code>：存放系统的配置文件，如果更改了该目录下得某个文件，可能导致系统无法正常启动<br><code>/bin和/usr/bin</code>：存放供除root外的普通用户使用的指令<br><code>/sbin和/usr/sbin</code>：是供root用户使用的指令<br><code>/var</code>：也是一个重要的目录，系统上运行各个程序所产生的日志都记录在该目录下(/var/log) 。mail指令的预设也放置在这里</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h5 id=&quot;使用快捷键&quot;&gt;&lt;a href=&quot;#使用快捷键&quot; class=&quot;headerlink&quot; title=&quot;使用快捷键&quot;&gt;&lt;/a&gt;使用快捷键&lt;/h5&gt;&lt;p&gt;&lt;code&gt;ctrl+c&lt;/code&gt;:结束当前指令，如果你输入了一大串命令，但是并不想执行，就可以按下 Ctrl+c，光标会跳到下一行，并在刚刚结束的地方 打上一个 ^C的标记&lt;br&gt;&lt;code&gt;Ctrl+D&lt;/code&gt;:退出当前终端，也可以用 exit来退出&lt;br&gt;&lt;code&gt;Ctrl+Z&lt;/code&gt;:暂停当前进程，和Ctrl+C不一样，暂停后，可以用fg指令恢复该进程&lt;br&gt;&lt;code&gt;Ctrl+L&lt;/code&gt;:清屏，clear指令也有同样的功能&lt;br&gt;&lt;code&gt;Ctrl+A&lt;/code&gt;:可以让光标移动到命令的最前面（第一个字符）&lt;br&gt;&lt;code&gt;Ctrl+E&lt;/code&gt;:将光标移动到命令最后面&lt;/p&gt;
-&lt;h5 id=&quot;查询帮助文档&quot;&gt;&lt;a href=&quot;#查询帮助文档&quot; class=&quot;headerlink&quot; title=&quot;查询帮助文档&quot;&gt;&lt;/a&gt;查询帮助文档&lt;/h5&gt;&lt;p&gt;&lt;code&gt;man&lt;/code&gt;： 用于查看命令的帮助文档 例：&lt;code&gt;man ls&lt;/code&gt;&lt;br&gt;&lt;code&gt;ls&lt;/code&gt;：列出当前目录下的目录和文件，不包含隐藏文件&lt;br&gt;&lt;code&gt;ls -a&lt;/code&gt;：列出当目录下的所有文件和目录，包含隐藏文件&lt;br&gt;&lt;code&gt;ls -l&lt;/code&gt;：列出当前目录下出隐藏文件外的所有文件和目录，包含 权限、所属主、所属组及文件创建时间&lt;br&gt;&lt;code&gt;ls [文件名]&lt;/code&gt;：会列出指定目录下的文件和目录&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="linux,阿铭" scheme="http://yoursite.com/tags/linux-%E9%98%BF%E9%93%AD/"/>
     
   </entry>
   
